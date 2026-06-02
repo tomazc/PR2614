@@ -128,7 +128,7 @@ def primary_country(val):
 
 @st.cache_data
 def fetch_balkan_data():
-    df = pd.read_csv("balkan_movies_confirmed.csv")
+    df = pd.read_csv("data/balkan_movies_confirmed.csv")
     df = df[~df['title_final'].isin(FALSE_POSITIVES)].copy()
     df = df[df['country'].apply(is_strictly_single_balkan)].copy()
     df = df.dropna(subset=['year_final'])
